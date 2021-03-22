@@ -1,3 +1,18 @@
+const wrapper = document.querySelector("#button-wrapper");
+const display = document.querySelector("#display");
+
+wrapper.addEventListener("click", (e) => {
+  const isButton = e.target.nodeName === "BUTTON";
+  if (!isButton) {
+    return;
+  }
+
+  if (e.target.classList.contains("number")) {
+    // console.log(e);
+    display.value += e.target.innerText;
+  }
+});
+
 const add = function (a, b) {
   return a + b;
 };
