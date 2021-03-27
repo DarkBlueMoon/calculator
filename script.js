@@ -31,6 +31,9 @@ operatorButtons.forEach((button) => {
   });
 });
 
+clearButton.addEventListener("click", clearAll);
+equalsButton.addEventListener("click", evaluate);
+
 // Set the second operand
 // Pass the two values to operate()
 function evaluate() {
@@ -54,6 +57,7 @@ function multiply(a, b) {
 
 function divide(a, b) {
   if (b === 0) {
+    setTimeout(clearAll, 1000);
     return "Cannot divide by zero.";
   }
   return a / b;
@@ -83,64 +87,3 @@ function operate(num1, num2, op) {
       return "Invalid operator. Valid operators are '+', '-', '*', '/'";
   }
 }
-
-// function operate(num1, num2, op) {
-//   // The user has entered a value POST operator that will be evaluated
-//   // with the previously saved value.
-//   if (num2 !== "") {
-//     console.log(num1, num2, op);
-//     num1 = parseFloat(num1);
-//     switch (op) {
-//       case "+":
-//         // return add(num1, num2);
-//         totalVal = add(num2, num1);
-//       case "-":
-//         // return subtract(num1, num2);
-//         totalVal = subtract(num2, num1);
-//         break;
-//       case "*":
-//         // return multiply(num1, num2);
-//         break;
-//       case "/":
-//         // return divide(num1, num2);
-//         break;
-//       default:
-//         // return "Invalid operator. Valid operators are '+', '-', '*', '/'";
-//         break;
-//     }
-//     num2 = totalVal;
-//     display.value = num2;
-//   } else if (num1 !== "") {
-//     num2 = parseFloat(num1);
-//   }
-//   firstOperand = "";
-//   // The user has entered a value that needs to be saved.
-// }
-
-// wrapper.addEventListener("click", (e) => {
-//   const isButton = e.target.nodeName === "BUTTON";
-//   if (!isButton) {
-//     return;
-//   }
-
-//   if (e.target.classList.contains("number")) {
-//     appendNumber(e.target.innerText);
-//     // firstOperand += e.target.innerText;
-//     // display.value += e.target.innerText;
-//   } else if (e.target.classList.contains("clear")) {
-//     clearAll();
-//   } else if (e.target.classList.contains("operator")) {
-//     setOperator(e.target.innerText);
-//     // First, if operator is blank, set the operator
-//     // If not, set the second operand.
-//     if (operator === "") {
-//       operator = e.target.innerText;
-//     } else {
-//     }
-
-//     // operator = e.target.innerText;
-
-//     // operator = e.target.innerText;
-//     // operate(firstOperand, secondOperand, operator);
-//   }
-// });
