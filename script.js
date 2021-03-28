@@ -45,8 +45,13 @@ function evaluate() {
   shouldClearDisplay = true;
 }
 
-// Bugs:
-// 1) After pressing operator, each # press clears the display.
+// TODO:
+// 1) If user presses = before all numbers or an operator is chosen, prevent crashing.
+// 2) Round answers w/ long decimals to 3 digits.
+// 3) Allow the user to enter decimals.
+//    If a decimal is already in the display, don't let the user enter another one.
+// 4) Add a backspace button (for now, do an actual button w/ event listener.)
+//    This button will set the display to (display.value - 1char)
 
 function add(a, b) {
   return a + b;
@@ -79,16 +84,23 @@ function clearAll() {
 function operate(num1, num2, op) {
   num1 = parseFloat(num1);
   num2 = parseFloat(num2);
+  let ans = 0;
   switch (op) {
     case "+":
-      return add(num1, num2);
+      ans = add(num1, num2);
+      break;
     case "-":
-      return subtract(num1, num2);
+      ans = subtract(num1, num2);
+      break;
     case "*":
-      return multiply(num1, num2);
+      ans = multiply(num1, num2);
+      break;
     case "/":
-      return divide(num1, num2);
+      ans = divide(num1, num2);
+      break;
     default:
       return "Invalid operator. Valid operators are '+', '-', '*', '/'";
   }
+
+  return ans.toFixed(5);
 }
