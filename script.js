@@ -4,6 +4,7 @@ const numberButtons = document.querySelectorAll(".number");
 const operatorButtons = document.querySelectorAll(".operator");
 const clearButton = document.querySelector(".clear");
 const equalsButton = document.querySelector(".equals");
+const backspaceButton = document.querySelector(".backspace");
 
 let firstOperand = "";
 let secondOperand = "";
@@ -34,6 +35,10 @@ operatorButtons.forEach((button) => {
 
 clearButton.addEventListener("click", clearAll);
 equalsButton.addEventListener("click", evaluate);
+backspaceButton.addEventListener("click", () => {
+  // console.log(display.value);
+  display.value = display.value.slice(0, -1);
+});
 
 // Set the second operand
 // Pass the two values to operate()
@@ -47,11 +52,8 @@ function evaluate() {
 }
 
 // TODO:
-// 1) If user presses = before all numbers or an operator is chosen, prevent crashing.
 // 3) Allow the user to enter decimals.
 //    If a decimal is already in the display, don't let the user enter another one.
-// 4) Add a backspace button (for now, do an actual button w/ event listener.)
-//    This button will set the display to (display.value - 1char)
 
 function add(a, b) {
   return a + b;
