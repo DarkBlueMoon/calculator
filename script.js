@@ -38,6 +38,7 @@ equalsButton.addEventListener("click", evaluate);
 // Set the second operand
 // Pass the two values to operate()
 function evaluate() {
+  if (operator === "") return;
   secondOperand = display.value;
   totalVal = operate(firstOperand, secondOperand, operator);
   display.value = totalVal;
@@ -47,7 +48,6 @@ function evaluate() {
 
 // TODO:
 // 1) If user presses = before all numbers or an operator is chosen, prevent crashing.
-// 2) Round answers w/ long decimals to 3 digits.
 // 3) Allow the user to enter decimals.
 //    If a decimal is already in the display, don't let the user enter another one.
 // 4) Add a backspace button (for now, do an actual button w/ event listener.)
@@ -103,4 +103,5 @@ function operate(num1, num2, op) {
   }
 
   return ans.toFixed(5);
+  // return Math.round(ans * 100) / 100;
 }
