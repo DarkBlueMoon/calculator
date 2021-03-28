@@ -15,6 +15,7 @@ numberButtons.forEach((button) => {
   button.addEventListener("click", () => {
     if (shouldClearDisplay) display.value = "";
     display.value += button.textContent;
+    shouldClearDisplay = false;
   });
 });
 
@@ -41,7 +42,11 @@ function evaluate() {
   totalVal = operate(firstOperand, secondOperand, operator);
   display.value = totalVal;
   operator = "";
+  shouldClearDisplay = true;
 }
+
+// Bugs:
+// 1) After pressing operator, each # press clears the display.
 
 function add(a, b) {
   return a + b;
