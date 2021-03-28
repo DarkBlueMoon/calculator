@@ -5,12 +5,14 @@ const operatorButtons = document.querySelectorAll(".operator");
 const clearButton = document.querySelector(".clear");
 const equalsButton = document.querySelector(".equals");
 const backspaceButton = document.querySelector(".backspace");
+const pointButton = document.querySelector(".point");
 
 let firstOperand = "";
 let secondOperand = "";
 let operator = "";
 let totalVal = 0;
 let shouldClearDisplay = false;
+let decimalClicked = false;
 
 numberButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -30,14 +32,20 @@ operatorButtons.forEach((button) => {
     firstOperand = display.value;
     operator = button.textContent;
     shouldClearDisplay = true;
+    decimalClicked = false;
   });
 });
 
 clearButton.addEventListener("click", clearAll);
 equalsButton.addEventListener("click", evaluate);
 backspaceButton.addEventListener("click", () => {
-  // console.log(display.value);
   display.value = display.value.slice(0, -1);
+});
+pointButton.addEventListener("click", () => {
+  if (!decimalClicked) {
+    decimalClicked = true;
+    display.value += ".";
+  }
 });
 
 // Set the second operand
@@ -49,6 +57,7 @@ function evaluate() {
   display.value = totalVal;
   operator = "";
   shouldClearDisplay = true;
+  decimalClicked = false;
 }
 
 // TODO:
